@@ -1,0 +1,111 @@
+ {
+  "project": {
+    "id": "qbtbe5",
+    "name": "3D photo",
+    "creationTs": 1682534993360,
+    "lastModifiedTs": 1682535178135
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "input_image_xun9bp",
+        "nodeSpecId": "input_image",
+        "customData": {
+          "initialWidth": 448,
+          "initialHeight": 240,
+          "previewX": 16,
+          "previewY": 16,
+          "previewWidth": 448,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 69,
+          "posY": 104,
+          "width": 176,
+          "selected": true
+        },
+        "propValues": {
+          "urls": [
+            "https://storage.googleapis.com/tfweb/testpics/pose1.jpg",
+            "https://storage.googleapis.com/tfweb/testpics/dog.jpeg",
+            "https://storage.googleapis.com/tfweb/testpics/strawberry2.jpeg",
+            "https://storage.googleapis.com/tfjs-models/demos/3dphoto/images/im3.jpg",
+            "https://storage.googleapis.com/tfjs-models/demos/3dphoto/images/im8.jpg",
+            "https://storage.googleapis.com/tfjs-models/demos/3dphoto/images/im9.jpg"
+          ],
+          "gridColumnCount": 3,
+          "allowUserUpload": false,
+          "selectedImageUrl": "https://storage.googleapis.com/tfjs-models/demos/3dphoto/images/im8.jpg",
+          "hidePreview": false
+        }
+      },
+      {
+        "id": "portrait_depth_a7n8bn",
+        "nodeSpecId": "portrait_depth",
+        "customData": {
+          "rightOfNode": "input_image_xun9bp",
+          "previewX": 480,
+          "previewY": 16,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 432,
+          "posY": 224,
+          "width": 176,
+          "selected": false
+        },
+        "propValues": {
+          "minDepth": 0,
+          "maxDepth": 1
+        },
+        "incomingEdges": {
+          "image": [
+            {
+              "sourceNodeId": "input_image_xun9bp",
+              "outputId": "image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "threed_photo_3e18xl",
+        "nodeSpecId": "threed_photo",
+        "customData": {
+          "initialWidth": 240,
+          "initialHeight": 320,
+          "previewX": 480,
+          "previewY": 16,
+          "previewWidth": 272,
+          "previewHeight": 416
+        },
+        "uiData": {
+          "posX": 800,
+          "posY": 64,
+          "width": 176,
+          "selected": false
+        },
+        "propValues": {
+          "cameraSpeed": 0.5,
+          "cameraRadius": 0.4,
+          "cameraZ": 9.5,
+          "hidePreview": false
+        },
+        "incomingEdges": {
+          "image": [
+            {
+              "sourceNodeId": "input_image_xun9bp",
+              "outputId": "image"
+            }
+          ],
+          "depthMapTensor": [
+            {
+              "sourceNodeId": "portrait_depth_a7n8bn",
+              "outputId": "tensor"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
